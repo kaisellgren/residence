@@ -8,12 +8,30 @@ app.get('/', (req, res) => {
 })
 
 app.get('/app.js', (req, res) => {
-  /*exec('webpack --config webpack.config.js src/client/index.js target/app.js', (error, stdout, stderr) => {
-    console.log(stdout)*/
-    fs.readFile('target/app.js', (error, data) => {
-      res.send(data)
-    })
-  //})
+  fs.readFile('target/app.js', (error, data) => {
+    res.send(data)
+  })
+})
+
+const dummyData = {
+  residences: [
+    {
+      price: 249000,
+      unit: 'EUR',
+      squareMeters: 52.5,
+      yearBuilt: 1937,
+      roomCount: 2,
+      hasKitchen: true,
+      hasShower: true,
+      city: 'Helsinki',
+      address: 'Harjutori 10',
+      description: 'Harjutorin reunalla 30-luvun funkistalossa tilava kaksio. Tässä kodissa on valkoiset lautalattiat, korkeat huoneet, runsaasti valoa tuovat kulmaikkunat ja leveät ikkunalaudat. Asunto sijaitsee hissitalon 5. kerroksessa, korkealla Torkkelinmäellä. Ikkunoista on rauhalliset näkymät Franzéninpuistoon. Kaksion huoneet jakaa toimiva keittiö, jossa on tilaa ruokapöydälle. Laatoitetussa kylpyhuoneessa ihastuttaa tassuamme. Taloyhtiössä isommat remontit tehty. Tervetuloa tekemään tarjouksesi!'
+    }
+  ]
+}
+
+app.get('/residences', (req, res) => {
+  res.send(JSON.stringify(dummyData.residences))
 })
 
 const server = app.listen(8080, () => {
