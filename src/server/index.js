@@ -3,6 +3,8 @@ const fs = require('fs')
 const express = require('express')
 const app = express()
 
+app.use('/static', express.static('static'))
+
 app.get('/', (req, res) => {
   res.send('<html><body><link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet" type="text/css"><link rel="stylesheet" href="static/reset.css" /><script src="app.js"></script></body></html>')
 })
