@@ -1,14 +1,16 @@
-const h = require('virtual-dom/h')
+import h from 'virtual-dom/h'
 
 function factory(tagName) {
-  return h.apply(null, [tagName].concat(Array.prototype.slice.call(arguments, 1)))
+  return function () {
+    return h.apply(null, [tagName].concat(Array.prototype.slice.call(arguments)))
+  }
 }
 
-exports.input = factory.bind(null, 'input')
-exports.div = factory.bind(null, 'div')
-exports.ul = factory.bind(null, 'ul')
-exports.li = factory.bind(null, 'li')
-exports.span = factory.bind(null, 'span')
-exports.h1 = factory.bind(null, 'h1')
-exports.a = factory.bind(null, 'a')
-exports.p = factory.bind(null, 'p')
+export const input = factory('input')
+export const div = factory('div')
+export const ul = factory('ul')
+export const li = factory('li')
+export const span = factory('span')
+export const h1 = factory('h1')
+export const a = factory('a')
+export const p = factory('p')

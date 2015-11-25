@@ -1,19 +1,18 @@
-require('rx-dom')
+import 'rx-dom'
 
-const diff = require('virtual-dom/diff')
-const patch = require('virtual-dom/patch')
-const createElement = require('virtual-dom/create-element')
-const dom = require('./util/dom')
-const app = require('./app')
-const div = dom.div
+import diff from 'virtual-dom/diff'
+import patch from 'virtual-dom/patch'
+import createElement from 'virtual-dom/create-element'
+import * as app from './app'
+import {div} from './util/dom'
 
 var tree = div()
-const rootNode = createElement(tree)
+var rootNode = createElement(tree)
 document.body.appendChild(rootNode)
 
 app.model().subscribe(state => {
   const newTree = app.render(state)
   const patches = diff(tree, newTree)
   rootNode = patch(rootNode, patches)
-  tree = newTree;
+  tree = newTree
 })

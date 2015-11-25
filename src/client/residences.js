@@ -1,16 +1,11 @@
-const rx = require('rx')
-const css = require('./css')
-const dom = require('./util/dom')
-const ajax = require('./util/ajax')
-const div = dom.div, input = dom.input
+import * as rx from 'rx'
+import * as css from './css'
+import {div} from './util/dom'
+import * as ajax from './util/ajax'
 
-exports.model = () => {
-  return ajax.get('/residences')
-}
+export const model = () => ajax.get('/residences')
 
-exports.render = state =>
+export const render = state =>
   div({},
-    state.map(r => {
-      return div({style: css.box}, r.description)
-    })
+    state.map(r => div({style: css.box}, r.description))
   )

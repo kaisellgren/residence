@@ -1,3 +1,3 @@
-const rx = require('rx')
+import * as rx from 'rx'
 
-exports.get = url => rx.DOM.get(url).pluck('response').map(JSON.parse)
+export const get = url => rx.DOM.get(url).pluck('response').map(JSON.parse)

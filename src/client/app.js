@@ -1,15 +1,14 @@
-const rx = require('rx')
-const css = require('./css')
-const dom = require('./util/dom')
-const residences = require('./residences')
-const div = dom.div, h1 = dom.h1, a = dom.a, p = dom.p
+import * as rx from 'rx'
+import * as css from'./css'
+import {div, h1, p, a} from './util/dom'
+import * as residences from './residences'
 
-exports.model = () => {
+export const model = () => {
   var residencesModel = residences.model()
   return residencesModel
 }
 
-exports.render = state =>
+export const render = state =>
   div({style: css.container}, [
     div({style: css.header}, [
       div({style: css.headerTitleColumn},
@@ -17,7 +16,7 @@ exports.render = state =>
       ),
       div({style: css.menu}, [
         a({style: css.menuItem}, 'Etusivu'),
-        a({style: css.menuItem}, 'Asunnot')
+        a({style: css.menuItem, href: '/asunnot'}, 'Asunnot')
       ])
     ]),
     div({},

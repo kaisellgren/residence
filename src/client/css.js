@@ -2,13 +2,13 @@ function merge(left, right) {
   return {}
 }
 
-exports.mix = {
+export const mix = {
   relative: {
     position: 'relative'
   }
 }
 
-exports.container = {
+export const container = {
   width: '100%',
   background: '#f0f0f0',
   display: 'flex',
@@ -17,7 +17,7 @@ exports.container = {
   fontFamily: "'Titillium Web', sans-serif"
 }
 
-exports.header = {
+export const header = {
   padding: 16,
   background: 'rgba(255, 255, 255, 0.7)',
   position: 'absolute',
@@ -30,19 +30,19 @@ exports.header = {
   boxShadow: '0 2px 6px 0 rgba(0, 0, 0, 0.15)'
 }
 
-exports.headerTitleColumn = {
+export const headerTitleColumn = {
   flex: 1,
   textAlign: 'center'
 }
 
-exports.headerTitle = {
+export const headerTitle = {
   margin: 0,
   color: '#78BD12',
   display: 'inline',
   fontSize: '2rem'
 }
 
-exports.footer = {
+export const footer = {
   padding: 32,
   background: 'rgba(255, 255, 255, 0.7)',
   borderTop: '1px solid rgba(0, 0, 0, 0.4)',
@@ -54,20 +54,20 @@ exports.footer = {
   fontSize: '1rem'
 }
 
-exports.menu = {
+export const menu = {
   display: 'flex',
   flex: 1,
   alignItems: 'center'
 }
 
-exports.menuItem = {
+export const menuItem = {
   marginRight: 64,
   cursor: 'pointer',
   fontSize: '1.1rem',
   color: '#525252'
 }
 
-exports.introduction = {
+export const introduction = {
   position: 'absolute',
   top: 410,
   left: 300,
@@ -78,18 +78,18 @@ exports.introduction = {
   color: 'white'
 }
 
-exports.frontPageBackground = {
+export const frontPageBackground = {
   background: 'url(/static/interior3.jpg)',
   width: '100%',
   height: '100%',
   backgroundSize: 'cover'
 }
 
-exports.frontPageTitle = {
+export const frontPageTitle = {
   fontSize: '2rem',
   margin: 0
 }
 
-exports.frontPageDescription = {
+export const frontPageDescription = {
   fontSize: '1.2rem'
 }
