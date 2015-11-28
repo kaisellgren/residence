@@ -6,13 +6,9 @@ import createElement from 'virtual-dom/create-element'
 import * as app from './app'
 import {div} from './util/dom'
 
-var tree = div()
-var rootNode = createElement(tree)
-document.body.appendChild(rootNode)
+app.model().scan((state, appModel) => {
+  const tree = app.render(appModel)
+  const target = patch(state.target, diff(state.tree, tree))
 
-app.model().subscribe(state => {
-  const newTree = app.render(state)
-  const patches = diff(tree, newTree)
-  rootNode = patch(rootNode, patches)
-  tree = newTree
-})
+  return { tree, target }
+}, {tree: div(), target: document.getElementById('application') }).subscribe()

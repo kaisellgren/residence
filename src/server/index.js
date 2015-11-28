@@ -33,7 +33,15 @@ app.get('/residences', (req, res) => {
 })
 
 app.use((req, res) => {
-  res.send('<html><body><link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet" type="text/css"><link rel="stylesheet" href="static/reset.css" /><script src="app.js"></script></body></html>')
+  res.send(`
+<html>
+  <body>
+    <div id="application"></div>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="static/reset.css" />
+    <script src="app.js"></script>
+  </body>
+</html>`)
 })
 
 const server = app.listen(8080, () => {
