@@ -2,10 +2,16 @@ import * as rx from 'rx'
 import * as css from'./css'
 import {div, h1, p, a} from './util/dom'
 import * as residences from './residences'
+import {Router} from '../shared/router'
+import * as routes from '../shared/routes'
 
 export const model = () => {
-  var residencesModel = residences.model()
-  return residencesModel
+  const router = Router()
+  const residencesModel = residences.model()
+
+  return rx.Observable.combineLatest(router.route, residencesModel, (route, residencesModel) => ({
+    router, route, residencesModel
+  }))
 }
 
 export const render = state =>
@@ -15,18 +21,23 @@ export const render = state =>
         h1({style: css.headerTitle}, 'Residence')
       ),
       div({style: css.menu}, [
-        a({style: css.menuItem}, 'Etusivu'),
-        a({style: css.menuItem, href: '/asunnot'}, 'Asunnot')
+        a({style: css.menuItem, href: routes.home, onclick: state.router.paginate}, 'Etusivu'),
+        a({style: css.menuItem, href: routes.residences, onclick: state.router.paginate}, 'Asunnot')
       ])
     ]),
-    div({},
-      div({style: css.mix.relative}, [
-        div({style: css.frontPageBackground}),
-        div({style: css.introduction}, [
-          h1({style: css.frontPageTitle}, 'Löydä unelmiesi koti jo tänään'),
-          p({style: css.frontPageDescription}, 'Residence tarjoaa Suomen laajimman valikoiman asuntojen ostamiseen. No lol.')
-        ])
-      ])
+    div({}, [
+      state.route == routes.home ?
+        div({style: css.mix.relative}, [
+          div({style: css.frontPageBackground}),
+          div({style: css.introduction}, [
+            h1({style: css.frontPageTitle}, 'Löydä unelmiesi koti jo tänään'),
+            p({style: css.frontPageDescription}, 'Residence tarjoaa Suomen laajimman valikoiman asuntojen ostamiseen. No lol.')
+          ])
+        ]) : null,
+      state.route == routes.residences ?
+        h1({}, 'Asunnot')
+        : null
+      ]
     ),
     div({style: css.footer}, 'This is a footer')
   ])
