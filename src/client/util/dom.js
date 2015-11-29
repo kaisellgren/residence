@@ -2,7 +2,7 @@ import h from 'virtual-dom/h'
 
 function factory(tagName) {
   return function () {
-    return h.apply(null, [tagName].concat(Array.prototype.slice.call(arguments)))
+    return h(tagName, ...arguments)
   }
 }
 
