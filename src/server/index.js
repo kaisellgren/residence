@@ -1,3 +1,4 @@
+const config = require('../../config.js').config
 const exec = require('child_process').exec
 const fs = require('fs')
 const express = require('express')
@@ -44,7 +45,7 @@ app.use((req, res) => {
 </html>`)
 })
 
-const server = app.listen(8080, () => {
+const server = app.listen(config.port, '0.0.0.0', () => {
   const host = server.address().address
   const port = server.address().port
 
