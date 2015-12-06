@@ -5,16 +5,11 @@ import * as ajax from './util/ajax'
 import {toPureView} from './util/pure-view'
 import {compose} from 'ramda'
 
-const render = state =>
+const createModel = () => ajax.get('/residences')
+
+const createView = state =>
   div({},
     state.map(r => div({style: css.box}, r.description))
   )
 
-export const Residences = () => {
-  const model = ajax.get('/residences')
-
-  return {
-    model,
-    view: model.map(compose(toPureView, render))
-  }
-}
+export const Residences = () => createModel().map(compose(toPureView, createView))

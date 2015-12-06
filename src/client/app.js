@@ -4,8 +4,10 @@ import {div, h1, p, a} from './util/dom'
 import {Residences} from './residences'
 import {Router} from '../shared/router'
 import * as routes from '../shared/routes'
+import {toPureView} from './util/pure-view'
+import {compose} from 'ramda'
 
-export const model = () => {
+const createModel = () => {
   const router = Router()
   const residences = Residences()
 
@@ -14,7 +16,7 @@ export const model = () => {
   }))
 }
 
-export const render = state =>
+const createView = state =>
   div({style: css.container}, [
     div({style: css.header}, [
       div({style: css.headerTitleColumn},
@@ -41,3 +43,5 @@ export const render = state =>
     ),
     div({style: css.footer}, 'This is a footer')
   ])
+
+export const App = () => createModel().map(compose(toPureView, createView))
