@@ -1,4 +1,5 @@
 import 'rx-dom'
+import './util/extra'
 
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'

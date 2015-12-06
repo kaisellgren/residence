@@ -1,5 +1,6 @@
 import * as rx from 'rx'
 import * as css from'./css'
+import {combineTemplate} from './util/rx'
 import {div, h1, p, a} from './util/dom'
 import {Residences} from './residences'
 import {Router} from '../shared/router'
@@ -11,9 +12,7 @@ const createModel = () => {
   const router = Router()
   const residences = Residences()
 
-  return rx.Observable.combineLatest(router.route, residences.view, (route, residencesView) => ({
-    router, route, residencesView
-  }))
+  return combineTemplate({ router, residences })
 }
 
 const createView = state =>
@@ -28,7 +27,7 @@ const createView = state =>
       ])
     ]),
     div({}, [
-      state.route == routes.home ?
+      state.router.route == routes.home ?
         div({style: css.mix.relative}, [
           div({style: css.frontPageBackground}),
           div({style: css.introduction}, [
@@ -36,8 +35,8 @@ const createView = state =>
             p({style: css.frontPageDescription}, 'Residence tarjoaa Suomen laajimman valikoiman asuntojen ostamiseen. No lol.')
           ])
         ]) : null,
-      state.route == routes.residences ?
-        state.residencesView
+      state.router.route == routes.residences ?
+        state.residences
         : null
       ]
     ),
