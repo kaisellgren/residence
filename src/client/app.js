@@ -1,16 +1,16 @@
 import * as rx from 'rx'
 import * as css from'./css'
 import {div, h1, p, a} from './util/dom'
-import * as residences from './residences'
+import {Residences} from './residences'
 import {Router} from '../shared/router'
 import * as routes from '../shared/routes'
 
 export const model = () => {
   const router = Router()
-  const residencesModel = residences.model()
+  const residences = Residences()
 
-  return rx.Observable.combineLatest(router.route, residencesModel, (route, residencesModel) => ({
-    router, route, residencesModel
+  return rx.Observable.combineLatest(router.route, residences.view, (route, residencesView) => ({
+    router, route, residencesView
   }))
 }
 
@@ -35,7 +35,7 @@ export const render = state =>
           ])
         ]) : null,
       state.route == routes.residences ?
-        h1({}, 'Asunnot')
+        state.residencesView
         : null
       ]
     ),
