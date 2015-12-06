@@ -1,7 +1,3 @@
-function merge(left, right) {
-  return {}
-}
-
 export const mix = {
   relative: {
     position: 'relative'
