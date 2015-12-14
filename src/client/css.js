@@ -6,11 +6,15 @@ export const mix = {
 
 export const container = {
   width: '100%',
-  background: '#f0f0f0',
+  height: '100%',
+  backgroundImage: 'url(/interior3.jpg)',
+  backgroundPosition: '50% 50%',
+  backgroundSize: 'cover',
   display: 'flex',
   flexDirection: 'column',
   fontSize: '8px',
-  fontFamily: "'Titillium Web', sans-serif"
+  fontFamily: "'Titillium Web', sans-serif",
+  overflow: 'auto'
 }
 
 export const header = {
@@ -71,14 +75,7 @@ export const introduction = {
   background: 'rgba(0,0,0,0.8)',
   padding: 24,
   borderRadius: '8px',
-  color: 'white'
-}
-
-export const frontPageBackground = {
-  background: 'url(/static/interior3.jpg)',
-  width: '100%',
-  height: '100%',
-  backgroundSize: 'cover'
+  color: 'rgba(255, 255, 255, 0.9)'
 }
 
 export const frontPageTitle = {
@@ -88,4 +85,34 @@ export const frontPageTitle = {
 
 export const frontPageDescription = {
   fontSize: '1.2rem'
+}
+
+export const residences = {
+  padding: '80px 0 0 80px'
+}
+
+export const residencesContainer = {
+  borderTop: '1px solid #666',
+  borderLeft: '1px solid #666',
+  borderRight: '1px solid #666',
+  width: '100rem',
+  display: 'flex',
+  background: 'white',
+  marginLeft: 'auto',
+  marginRight: 'auto'
+}
+export const residencesItem = {
+  borderBottom: '1px solid #666',
+  padding: '2rem'
+}
+
+export const residencesItemTitle = {
+  fontSize: '1.5rem',
+  color: '#78BD12',
+  margin: 0
+}
+
+export const residencesItemDescriptionm = {
+  fontSize: '1.1rem',
+  marginBottom: 0
 }
