@@ -13,13 +13,16 @@ const ds = datastore.dataset({
 })
 
 app.use(compression())
-app.use('/static', express.static('static'))
 
-app.get('/app.js', (req, res) => {
-  fs.readFile('target/app.js', (error, data) => {
-    res.send(data)
-  })
-})
+const staticOptions = {
+  index: false,
+  setHeaders: (res) => {
+    res.setHeader('Cache-Control', 'public, max-age=31557600')
+  }
+}
+
+app.use('/', express.static('static', staticOptions))
+app.use('/', express.static('target', staticOptions))
 
 app.get('/residences', (req, res) => {
   ds.runQuery(ds.createQuery('residence'), (err, stuff) => {
@@ -30,11 +33,14 @@ app.get('/residences', (req, res) => {
 app.use((req, res) => {
   res.send(`
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
   <body>
     <div id="application"></div>
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="static/reset.css" />
-    <script src="app.js"></script>
+    <script src="/app.js" async></script>
+    <link href="/reset.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet" />
   </body>
 </html>`)
 })
