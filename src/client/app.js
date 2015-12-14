@@ -12,7 +12,7 @@ const createModel = () => {
   const router = Router()
   const residences = Residences()
 
-  return combineTemplate({ router, residences })
+  return combineTemplate({router, residences})
 }
 
 const createView = state =>
@@ -29,17 +29,13 @@ const createView = state =>
     div({}, [
       state.router.route == routes.home ?
         div({style: css.mix.relative}, [
-          div({style: css.frontPageBackground}),
           div({style: css.introduction}, [
             h1({style: css.frontPageTitle}, 'Löydä unelmiesi koti jo tänään'),
             p({style: css.frontPageDescription}, 'Residence tarjoaa Suomen laajimman valikoiman asuntojen ostamiseen. No lol.')
           ])
         ]) : null,
-      state.router.route == routes.residences ?
-        state.residences
-        : null
-      ]
-    ),
+      state.router.route == routes.residences ? state.residences : null
+    ]),
     div({style: css.footer}, 'This is a footer')
   ])
 
