@@ -5,7 +5,7 @@ import * as ajax from './util/ajax'
 import {toPureView} from './util/pure-view'
 import {compose} from 'ramda'
 
-const createModel = () => ajax.get('/residences')
+const createModel = () => ajax.get('/residences').startWith([])
 
 const createView = state =>
   div({},
