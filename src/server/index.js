@@ -4,6 +4,7 @@ const fs = require('fs')
 const express = require('express')
 const app = express()
 const datastore = require('gcloud').datastore
+const compression = require('compression')
 
 const ds = datastore.dataset({
   projectId: config.cloud.projectId,
@@ -11,6 +12,7 @@ const ds = datastore.dataset({
   namespace: config.cloud.datastore.namespace
 })
 
+app.use(compression())
 app.use('/static', express.static('static'))
 
 app.get('/app.js', (req, res) => {
