@@ -8,6 +8,6 @@
 - Install Webpack global dep `npm install -g webpack`
 - Copy `config.template.js` to `config.js` and modify if needed
 - Start the server: `npm run-script app`
-- Start the Webpack build watcher: `./build.sh`
+- Start the Webpack build watcher: `./build-dev.sh`
 
 Open the application at http://localhost:8080/
