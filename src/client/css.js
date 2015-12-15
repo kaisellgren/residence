@@ -64,7 +64,10 @@ export const menuItem = {
   marginRight: 64,
   cursor: 'pointer',
   fontSize: '1.1rem',
-  color: '#525252'
+  color: '#525252',
+  ':hover': {
+    color: '#000'
+  }
 }
 
 export const introduction = {

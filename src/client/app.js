@@ -1,7 +1,7 @@
 import * as rx from 'rx'
 import * as css from'./css'
 import {combineTemplate} from './util/rx'
-import {div, h1, p, a} from './util/dom'
+import {div, h1, p, a, pseudo} from './util/dom'
 import {Residences} from './residences'
 import {Router} from '../shared/router'
 import * as routes from '../shared/routes'
@@ -22,8 +22,8 @@ const createView = state =>
         h1({style: css.headerTitle}, 'Residence')
       ),
       div({style: css.menu}, [
-        a({style: css.menuItem, href: routes.home, onclick: state.router.paginate}, 'Etusivu'),
-        a({style: css.menuItem, href: routes.residences, onclick: state.router.paginate}, 'Asunnot')
+        pseudo(a({style: css.menuItem, href: routes.home, onclick: state.router.paginate}, 'Etusivu')),
+        pseudo(a({style: css.menuItem, href: routes.residences, onclick: state.router.paginate}, 'Asunnot'))
       ])
     ]),
     div({}, [
