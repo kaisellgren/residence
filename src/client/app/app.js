@@ -1,11 +1,11 @@
 import * as rx from 'rx'
 import * as css from'./css'
-import {combineTemplate} from './util/rx'
-import {div, h1, p, a, pseudo} from './util/dom'
-import {Residences} from './residences'
-import {Router} from '../shared/router'
-import * as routes from '../shared/routes'
-import {toPureView} from './util/pure-view'
+import {combineTemplate} from '../util/rx'
+import {div, h1, p, a, pseudo} from '../util/dom'
+import {Residences} from '../residences/residences'
+import {Router} from '../../shared/router'
+import * as routes from '../../shared/routes'
+import {toPureView} from '../util/pure-view'
 import {compose} from 'ramda'
 
 const createModel = () => {
@@ -28,7 +28,7 @@ const createView = state =>
     ]),
     div({}, [
       state.router.route == routes.home ?
-        div({style: css.mix.relative}, [
+        div({style: css.homeContainer}, [
           div({style: css.introduction}, [
             h1({style: css.frontPageTitle}, 'Löydä unelmiesi koti jo tänään'),
             p({style: css.frontPageDescription}, 'Residence tarjoaa Suomen laajimman valikoiman asuntojen ostamiseen. No lol.')

@@ -4,7 +4,7 @@ import './util/extra'
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
 import createElement from 'virtual-dom/create-element'
-import {App} from './app'
+import {App} from './app/app'
 import {div} from './util/dom'
 
 App().scan((state, tree) => {

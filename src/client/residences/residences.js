@@ -1,8 +1,8 @@
 import * as rx from 'rx'
 import * as css from './css'
-import {div, h1, p} from './util/dom'
-import * as ajax from './util/ajax'
-import {toPureView} from './util/pure-view'
+import {div, h1, p} from '../util/dom'
+import * as ajax from '../util/ajax'
+import {toPureView} from '../util/pure-view'
 import {compose} from 'ramda'
 
 const createModel = () => ajax.get('/residences').startWith([])
